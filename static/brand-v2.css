@@ -1,0 +1,84 @@
+/* Shared brand tokens; the existing layout remains in site.css. */
+@font-face {
+  font-family: 'Teenidle';
+  src: url('brand/teen-idle.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+:root {
+  --font-body: 'Blogger Sans', 'Trebuchet MS', 'Segoe UI', sans-serif;
+  --font-heading: 'Teenidle', 'Blogger Sans', sans-serif;
+  --font-heading-weight: 500;
+  --font: var(--font-body);
+  --red: #D0393F;
+  --coffee-pattern: url('pattern.svg');
+}
+
+body, p, span, li, a, button, input, select, textarea {
+  font-family: var(--font-body);
+}
+
+h1, h2, h3,
+html[lang=en] .hero h1,
+html[lang=en] .page-intro h1,
+html[lang=en] .contacts-intro h1,
+html[lang=en] .delivery-intro h1 {
+  font-family: var(--font-heading);
+  font-weight: var(--font-heading-weight);
+  letter-spacing: -.025em;
+  line-height: 1.2;
+}
+
+/* A coloured span inside a heading must retain the heading typeface. */
+h1 span, h2 span, h3 span { font-family: inherit; }
+.marquee .marquee-group span, .delivery-heart p { font-family: var(--font-body); }
+
+.cafe-highlights { padding-bottom: 100px; }
+.cafe-highlights-list {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 45px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.cafe-highlights-list > li {
+  border-top: 1px solid var(--line);
+  padding-top: 22px;
+  min-width: 0;
+}
+.cafe-highlights-list p { max-width: 340px; }
+
+/* Opacity affects only the decorative layer, leaving content fully opaque. */
+.coffee-banner {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background-color: var(--red);
+}
+.coffee-banner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: var(--coffee-pattern);
+  background-repeat: repeat;
+  background-size: 240px 240px;
+  opacity: .1;
+  pointer-events: none;
+  z-index: -1;
+}
+.coffee-banner .coffee-grid { position: relative; }
+.coffee-banner :focus-visible { outline-color: var(--paper); }
+
+@media (max-width: 760px) {
+  .cafe-highlights { padding-bottom: 55px; }
+  .cafe-highlights-list { grid-template-columns: 1fr; gap: 27px; }
+  .cafe-highlights-list > li {
+    display: grid;
+    grid-template-columns: 35px minmax(0, 1fr);
+    column-gap: 15px;
+    padding-top: 18px;
+  }
+  .cafe-highlights-list .value-number { grid-row: 1 / 3; margin-top: 5px; }
+}

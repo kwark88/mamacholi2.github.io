@@ -1,0 +1,29 @@
+.icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  flex: 0 0 auto;
+  vertical-align: -.125em;
+  background-color: currentColor;
+  -webkit-mask: var(--icon-image) center / contain no-repeat;
+  mask: var(--icon-image) center / contain no-repeat;
+}
+.icon-heart { --icon-image: url('icons/heart.svg'); }
+.icon-heart-outline { --icon-image: url('icons/heart-outline.svg'); }
+.icon-arrow-up-right, .icon-arrow-up, .icon-arrow-down, .icon-arrow-left {
+  --icon-image: url('icons/arrow-up-right.svg');
+}
+.icon-arrow-up { transform: rotate(-45deg); }
+.icon-arrow-down { transform: rotate(135deg); }
+.icon-arrow-left { transform: rotate(-135deg); }
+.icon-search { --icon-image: url('icons/search.svg'); }
+.icon-close { --icon-image: url('icons/close.svg'); }
+.icon-plus { --icon-image: url('icons/plus.svg'); }
+.icon-undo { --icon-image: url('icons/undo.svg'); }
+.hand-heart, .contact-heart, .empty-heart, .delivery-heart > span { display: inline-flex; }
+.marquee .icon { width: 20px; height: 20px; }
+.search .icon-search { width: 20px; height: 20px; color: var(--muted); }
+.search button { display: inline-flex; align-items: center; justify-content: center; padding: 0; }
+.search button .icon { width: 18px; height: 18px; }
+.footer-main > a:last-child, .footer-bottom > a:last-child,
+.toolbar-links a, .delivery-contact > div > a { display: inline-flex; align-items: center; gap: .5em; }
